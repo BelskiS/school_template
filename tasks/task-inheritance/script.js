@@ -1,13 +1,13 @@
-function Builder(int) {
-  this.value = int
+function Builder(value) {
+  this.value = value
 }
 
 Builder.prototype.get = function get() {
   return this.value
 }
 
-function IntBuilder(int = 0) {
-  Builder.call(this, int)
+function IntBuilder(value = 0) {
+  Builder.call(this, value)
 }
 
 IntBuilder.random = function random(from, to) {
@@ -51,8 +51,8 @@ intBuilder
   .get() // -> 1;
 
 class StringBuilder extends Builder {
-  constructor(int = '') {
-    super(int)
+  constructor(value = '') {
+    super(value)
   }
 
   plus(...str) {

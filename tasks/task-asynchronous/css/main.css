@@ -1,0 +1,166 @@
+* {
+	box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font-family: Helvetica,Arial,sans-serif;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrapper {
+	background-image: url('../img/fon.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 50px 0;
+}
+
+.wrapper form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	max-width: 600px;
+	width: 100%;
+}
+form > input {
+	border-radius: 4px;
+	height: 40px;
+	flex-grow: 1;
+	margin: 5px;
+}
+form > input:hover,
+form > input:focus,
+form > input:active {
+	outline: none;
+}
+form > input[type='text'] {
+	background: rgba(255,255,255,0.9);
+	border: 1px solid #f9860c;
+	padding: 5px 10px;
+	min-width: 220px;
+}
+form > input[type='submit'] {
+	background: #f9860c;
+	border: none;
+	font-size: 16px;
+	padding: 0 16px;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+form > input[type='submit']:hover {
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+form .error_form {
+	display: block;
+	width: 100%;
+	color: red;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 5px;
+}
+form .error_form.hidden {
+	display: none;
+}
+
+.weather_wrapper {
+	background: rgba(255,255,255,0.9);
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	max-width: 900px;
+	width: 100%;
+	padding: 35px;
+	margin-top: 90px;
+}
+.weather_wrapper .weather_info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.weather_info .weather_ico {
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 80px;
+	height: 80px;
+	margin-bottom: 25px;
+}
+.weather_info .weather_temperature {
+	font-size: 34px;
+	font-weight: bold;
+	color: #f9860c;
+	margin-bottom: 15px;
+}
+.weather_info .weather_location {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.weather_wrapper .weather_parameters {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	margin: 0 -15px;
+}
+.weather_parameters > div {
+	background: rgba(249,134,12,0.3);
+	border-radius: 4px;
+	width: calc(33.33333333% - 30px);
+	min-width: 230px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	text-align: center;
+	font-size: 18px;
+	font-style: italic;
+	line-height: 24px;
+	margin: 15px;
+	padding: 10px;
+}

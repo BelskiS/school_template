@@ -31,20 +31,16 @@ class DoubleLinkedList {
 
   traverse(order = true) {
     let currentNode = this.head
+    const nodes = []
+
+    while (currentNode) {
+      nodes.push(currentNode)
+      currentNode = currentNode.next
+    }
 
     if (order) {
-      while (currentNode) {
-        console.log(currentNode.data)
-        currentNode = currentNode.next
-      }
+      nodes.forEach((item) => console.log(item.data))
     } else {
-      const nodes = []
-
-      while (currentNode) {
-        nodes.push(currentNode)
-        currentNode = currentNode.next
-      }
-
       nodes.reverse().forEach((item) => console.log(item.data))
     }
   }
@@ -67,18 +63,20 @@ class DoubleLinkedList {
     const parentValue = this.getNode(parentNode.data)
     const newNode = new Node(value)
 
-    if (parentValue !== null) {
-      if (parentValue.next !== null) {
-        parentValue.next.previous = newNode
-        newNode.next = parentValue.next
-      } else {
-        this.tail = newNode
-        console.log(this.tail)
-      }
-
-      newNode.previous = parentValue
-      parentValue.next = newNode
+    if (parentValue === null) {
+      return this
     }
+
+    if (parentValue.next !== null) {
+      parentValue.next.previous = newNode
+      newNode.next = parentValue.next
+    } else {
+      this.tail = newNode
+      console.log(this.tail)
+    }
+
+    newNode.previous = parentValue
+    parentValue.next = newNode
 
     return this
   }
@@ -86,20 +84,23 @@ class DoubleLinkedList {
   delete(value) {
     const currNode = this.getNode(value)
 
-    if (currNode !== null) {
-      if (currNode.next !== null) {
-        currNode.next.previous = currNode.previous
-      } else {
-        currNode.next = null
-        this.tail = currNode.previous
-      }
-      if (currNode.previous !== null) {
-        currNode.previous.next = currNode.next
-      } else {
-        currNode.previous = null
-        this.head = currNode.next
-      }
+    if (currNode === null) {
+      return this
     }
+
+    if (currNode.next !== null) {
+      currNode.next.previous = currNode.previous
+    } else {
+      currNode.next = null
+      this.tail = currNode.previous
+    }
+    if (currNode.previous !== null) {
+      currNode.previous.next = currNode.next
+    } else {
+      currNode.previous = null
+      this.head = currNode.next
+    }
+
     return this
   }
 
@@ -122,7 +123,8 @@ const parentNode = dll.getNode('one')
 dll.addAfter('ten', parentNode)
 dll.traverse() // two -> one -> ten -> three -> four
 
-dll.delete('one').delete('three')
+dll.delete('one')
+dll.delete('three')
 dll.traverse() // two -> ten -> four
 
 dll.isExist('ten') // true

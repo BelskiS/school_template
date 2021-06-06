@@ -1,38 +1,7 @@
-const wrapper = document.querySelector('.wrapper')
-const error = document.createElement('p')
+// eslint-disable-next-line import/prefer-default-export
+export function renderWeatherInfo(data) {
+  const wrapper = document.querySelector('.wrapper')
 
-function renderForm() {
-  const form = document.createElement('form')
-  const inputCity = document.createElement('input')
-  const inputCountry = document.createElement('input')
-  const inputSubmit = document.createElement('input')
-
-  inputCity.setAttribute('type', 'text')
-  inputCity.setAttribute('placeholder', 'city')
-  inputCity.setAttribute('required', 'required')
-  inputCity.classList.add('input_city')
-
-  inputCountry.setAttribute('type', 'text')
-  inputCountry.setAttribute('placeholder', 'country')
-  inputCountry.setAttribute('required', 'required')
-  inputCountry.classList.add('input_country')
-
-  inputSubmit.setAttribute('type', 'submit')
-  inputSubmit.setAttribute('value', 'Submit')
-  inputSubmit.classList.add('input_submit')
-
-  error.classList.add('error_form', 'hidden')
-  error.innerHTML = 'Field city is required'
-
-  wrapper.append(form)
-  form.append(inputCity, inputCountry, inputSubmit, error)
-}
-
-renderForm()
-
-const submit = document.querySelector('.input_submit')
-
-const renderWeatherInfo = (data) => {
   const divWeatherBlock = document.createElement('div')
 
   const divWeatherInfo = document.createElement('div')
@@ -77,28 +46,3 @@ const renderWeatherInfo = (data) => {
   divWeatherParameters.append(divWeatherTodayIs, divWeatherWind)
   divWeatherParameters.append(divWeatherSpeed, divWeatherPressure)
 }
-
-const getWeatherInfo = () => {
-  const inputCityValue = document.querySelector('.input_city').value
-  const inputCountryValue = document.querySelector('.input_country').value
-  const errorForm = document.querySelector('.error_form')
-
-  if (!inputCityValue) {
-    errorForm.classList.remove('hidden')
-  } else {
-    errorForm.classList.add('hidden')
-
-    fetch(`http://api.weatherstack.com/current?access_key=ad957082b892c13a0f73847cfc4c4826&query=${inputCityValue},${inputCountryValue}`)
-      .then((response) => response.json())
-      .then((data) => renderWeatherInfo(data))
-      .catch(() => {
-        console.log('Error opps')
-      })
-  }
-}
-
-submit.addEventListener('click', (e) => {
-  e.preventDefault()
-
-  getWeatherInfo()
-})

@@ -47,7 +47,7 @@ table {
 }
 
 .wrapper {
-	background-image: url('../img/fon.jpg');
+	background-image: url('img/fon.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	display: flex;
